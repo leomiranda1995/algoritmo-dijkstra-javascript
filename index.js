@@ -1,7 +1,7 @@
-const grafoArray = require('./src/grafo.js');
-const pontosGrafo = require('./src/functions/pontosGrafo.js');
-const matrizAnalise = require('./src/matrizAnalise.js');
-const dijkstra = require('./src/dijkstra.js');
+import { grafoArray } from './src/grafo.js';
+import { pontosGrafo } from './src/functions/pontosGrafo.js';
+import { matrizAnalise } from './src/matrizAnalise.js';
+import { dijkstra } from './src/dijkstra.js';
 
 // console.log(JSON.stringify(grafoArray)); // grafo em json
 

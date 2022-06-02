@@ -63,4 +63,4 @@ const dijkstra = (grafoArray, matrizAnalise, pontoInicial, pontoFinal, nextPonto
   });
 };
 
-module.exports = dijkstra;
+export { dijkstra };

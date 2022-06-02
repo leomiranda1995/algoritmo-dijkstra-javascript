@@ -8,4 +8,4 @@ const pontosGrafo = (grafoArray) => {
   return pontos;
 }
 
-module.exports = pontosGrafo;
+export { pontosGrafo };

@@ -16,4 +16,4 @@ const matrizAnalise = (pontosGrafo) => {
   return matrizAnalise;
 }
 
-module.exports = matrizAnalise;
+export { matrizAnalise };

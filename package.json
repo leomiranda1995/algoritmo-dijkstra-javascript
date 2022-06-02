@@ -5,6 +5,7 @@
   "repository": "https://github.com/leomiranda1995/algoritmo-dijkstra-javascript.git",
   "author": "Leonardo da Silva Miranda <leomiranda1995@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "node ./index.js"
   }

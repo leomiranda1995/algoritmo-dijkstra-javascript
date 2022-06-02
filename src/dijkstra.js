@@ -1,63 +1,54 @@
-const dijkstra = (grafoArray, matrizAnalise, pontoInicial, pontoFinal, nextPontos, proximosItens = true) => {
-  // let finalizaPrograma = false;
+const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, localEmFoco, buscaProximoDestino = true) => {
 
-  Array.from(nextPontos).map((localizacaoFoco) => {
-    const [pontoFocoGrafo] = grafoArray.filter((grafo) => (grafo.local === localizacaoFoco)); // pega do grafo o objeto do ponto que está em foco
-    const [pontoFocoMatriz] = matrizAnalise.filter((nicho) => (nicho.chegarEm === localizacaoFoco)); // pega da matrizAnalise o objeto do ponto que está em foco
+  Array.from(localEmFoco).map((localizacaoAtual) => {
+    
+    const [ localAtual ] = grafo.filter((grafo) => (grafo.nome === localizacaoAtual));
+    const [ localAtualMatriz ] = matrizResultado.filter((local) => (local.chegarEm === localizacaoAtual));
 
-    // Busca as conexões que o ponto no grafo tem, filtrando as que possuem custo > 0 e não seja o próprio ponto
-    // Segundo filtro exclui os pontos de que que esse grafo veio, para voltar um caminho
-    // Terceiro ordena o array pelo custo do menor para o maior
-    const pontosConexao = pontoFocoGrafo.conexao.filter((localizacao) => (
-      localizacao.custo > 0 && localizacao.ponto !== localizacaoFoco && !localizacao.passou
-    )).filter((localizacao) => (
-      !pontoFocoMatriz.vindoDe.includes(localizacao.ponto)
+    const destinosLocalAtual = localAtual.destinos.filter((destino) => (
+      destino.custo > 0 && destino.nome !== localizacaoAtual && !destino.passou
+    )).filter((destino) => (
+      !localAtualMatriz.vindoDe.includes(destino.nome)
     )).sort((a, b) => {
       if (a.custo < b.custo) {
         return -1;
       } else {
-        return true
+        return true;
       }
     });
 
-    pontosConexao.map((conexao) => {
-      const [updatedMatrizAnalise] = matrizAnalise.filter((item) => (item.chegarEm === conexao.ponto));
+    destinosLocalAtual.map((destino) => {
+      const [destinoChegada] = matrizResultado.filter((itemMatriz) => (itemMatriz.chegarEm === destino.nome));
 
-      // console.log(`
-      //   pontoFoco: ${pontoFocoMatriz.chegarEm}, custo até então: ${pontoFocoMatriz.custoDe}
-      //   pontoDestino: ${updatedMatrizAnalise.chegarEm}, custo até então : ${updatedMatrizAnalise.custoDe}
-      //   custo Conexão: ${conexao.custo}
-      // `);
-
-      // console.log(`${pontoFocoMatriz.chegarEm} -> ${updatedMatrizAnalise.chegarEm}`);
-      if (((pontoFocoMatriz.custoDe + conexao.custo) < (updatedMatrizAnalise.custoDe)) || (updatedMatrizAnalise.custoDe === 0)) {
-        updatedMatrizAnalise.custoDe = (pontoFocoMatriz.custoDe + conexao.custo);
-        updatedMatrizAnalise.vindoDe = [ ...pontoFocoMatriz.vindoDe, pontoFocoMatriz.chegarEm ];
-      } else {
-        if (updatedMatrizAnalise.custoDe === 0){
-          updatedMatrizAnalise.custoDe += conexao.custo;
-          updatedMatrizAnalise.vindoDe.push(localizacaoFoco);
-        }
+      if (((localAtualMatriz.custoDe + destino.custo) < (destinoChegada.custoDe)) || (destinoChegada.custoDe === 0)) {
+        destinoChegada.custoDe = (localAtualMatriz.custoDe + destino.custo);
+        destinoChegada.vindoDe = [ ...localAtualMatriz.vindoDe, localAtualMatriz.chegarEm ];
+      } else if (destinoChegada.custoDe === 0){
+        destinoChegada.custoDe += destino.custo;
+        destinoChegada.vindoDe.push(localizacaoAtual);
       }
 
+      localAtualMatriz.passou = true;
+      // console.log(`${localAtualMatriz.chegarEm} -> ${destinoChegada.chegarEm}`);
     });
 
-    pontoFocoMatriz.passou = true;
+    if (buscaProximoDestino) {
+      let proximosDetinosLocalAtual = [];
 
-    if (proximosItens){
-      let proximosPontosPontoEmFoco = [];
-      pontosConexao.map((conexao) => {
-        proximosPontosPontoEmFoco.push(conexao.ponto);
+      destinosLocalAtual.map((conexao) => {
+        proximosDetinosLocalAtual.push(conexao.nome);
       });
 
-      for(let i=0; i<proximosPontosPontoEmFoco.length; i++) {
-        let vaiParaProximo = (i===proximosPontosPontoEmFoco.length-1);
+      for(let i=0; i<proximosDetinosLocalAtual.length; i++) {
+        let vaiParaProximo = (i === proximosDetinosLocalAtual.length-1);
         
-        if (proximosPontosPontoEmFoco[i] === pontoFinal) {
+        // console.log(matrizResultado);
+
+        if (proximosDetinosLocalAtual[i] === pontoFinal) {
           return;
         }
-        
-        dijkstra(grafoArray, matrizAnalise, pontoInicial, pontoFinal, proximosPontosPontoEmFoco[i], vaiParaProximo);
+
+        dijkstra(grafo, matrizResultado, pontoInicial, pontoFinal, proximosDetinosLocalAtual[i], vaiParaProximo);
       }
     }
   });

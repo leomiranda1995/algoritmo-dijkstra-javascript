@@ -1,11 +1,15 @@
-const matrizAnalise = (pontosGrafo) => {
+import { locaisGrafo } from "./functions/locaisGrafo.js";
+
+const matrizAnalise = (grafo) => {
+  let locaisDoGrafo = locaisGrafo(grafo);
+
   let matrizAnalise = [];
 
-  pontosGrafo.map((ponto) => {
+  locaisDoGrafo.map((local) => {
     matrizAnalise = [
       ...matrizAnalise,
       {
-        chegarEm: ponto,
+        chegarEm: local,
         custoDe: 0,
         vindoDe: [],
         passou: false,

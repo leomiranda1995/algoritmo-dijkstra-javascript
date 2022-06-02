@@ -1,4 +1,4 @@
-import { locaisGrafo } from "./functions/locaisGrafo.js";
+import { locaisGrafo } from "./locaisGrafo.js";
 
 const matrizAnalise = (grafo) => {
   let locaisDoGrafo = locaisGrafo(grafo);

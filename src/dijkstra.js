@@ -35,8 +35,8 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, localEmFoco,
     if (buscaProximoDestino) {
       let proximosDetinosLocalAtual = [];
 
-      destinosLocalAtual.map((conexao) => {
-        proximosDetinosLocalAtual.push(conexao.nome);
+      destinosLocalAtual.map((destino) => {
+        proximosDetinosLocalAtual.push(destino.nome);
       });
 
       for(let i=0; i<proximosDetinosLocalAtual.length; i++) {

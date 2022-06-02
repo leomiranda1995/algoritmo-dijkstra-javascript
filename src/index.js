@@ -1,6 +1,6 @@
-import { grafo } from './src/grafo.js';
-import { matrizAnalise } from './src/matrizAnalise.js';
-import { dijkstra } from './src/dijkstra.js';
+import { grafo } from './grafo.js';
+import { matrizAnalise } from './matrizAnalise.js';
+import { dijkstra } from './dijkstra.js';
 
 const matriz = matrizAnalise(grafo);
 

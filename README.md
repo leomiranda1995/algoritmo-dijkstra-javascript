@@ -6,11 +6,14 @@ Algoritmo desenvolvido pelo aluno Leonardo da Silva Miranda para a aula do profe
 Passos para testar o código:
 
 1 - Será necessário ter o VS Code e Node.js instalado em sua máquina
+
 2 - Após clonar o projeto e abrí-lo com o VS Code execute o comando abaixo no terminal:
 
 ```sh
-  > npm start
-  
-  ou, se você tiver o yarn instalado:
-  > yarn start # ou npm run dev
+  npm start
+```
+
+ou, se você tiver o yarn instalado:
+```sh
+  yarn start
 ```

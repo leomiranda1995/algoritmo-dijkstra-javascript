@@ -1,0 +1,11 @@
+{
+  "name": "algoritmo-dijkstra-javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/leomiranda1995/algoritmo-dijkstra-javascript.git",
+  "author": "Leonardo da Silva Miranda <leomiranda1995@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index.js"
+  }
+}

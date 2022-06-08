@@ -22,8 +22,9 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, posicaoAnali
     console.log('');
     console.log(`${localAtualMatriz.chegarEm} -> ${destinoChegada.chegarEm}`);
     console.log(matrizResultado);
+    console.log('');
     console.log('------------------');
-    
+
     localAtualMatriz.visitou = true;
     // console.log('depois: ', destino);
     

@@ -9,4 +9,5 @@ let pontoFinal = 'e';
 
 dijkstra(grafo, matriz, pontoInicial, pontoFinal, pontoInicial);
 const [ resultado ] = matriz.filter((local) => local.chegarEm === pontoFinal);
+console.log('Resultado:');
 console.log(resultado);

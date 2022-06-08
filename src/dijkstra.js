@@ -13,7 +13,7 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, posicaoAnali
     const [destinoChegada] = matrizResultado.filter((itemMatriz) => (itemMatriz.chegarEm === destino.nome));
     // console.log('antes: ', destino);
     
-    // console.log(`${localAtualMatriz.chegarEm} -> ${destinoChegada.chegarEm}`);
+    console.log(`${localAtualMatriz.chegarEm} -> ${destinoChegada.chegarEm}`);
     
     if (((localAtualMatriz.custoDe + destino.custo) < (destinoChegada.custoDe)) || (destinoChegada.custoDe === 0)) {
       destinoChegada.custoDe = (localAtualMatriz.custoDe + destino.custo);
@@ -24,7 +24,7 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, posicaoAnali
     // console.log('depois: ', destino);
     
   });
-  // console.log(matrizResultado);
+  console.log(matrizResultado);
   
   if (buscaProximosDestino) {
     let proximosDetinosLocalAtual = [];

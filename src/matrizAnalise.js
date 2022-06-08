@@ -12,7 +12,7 @@ const matrizAnalise = (grafo) => {
         chegarEm: local,
         custoDe: 0,
         vindoDe: [],
-        passou: false,
+        visitou: false,
       },
     ]
   });

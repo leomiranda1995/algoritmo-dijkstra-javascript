@@ -1,9 +1,9 @@
 import { pontosConexaoPontoFinal } from "./pontosConexaoPontoFinal.js";
 
 const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, destinosAnalise) => {
-  const proximosAlvos = [];
+  const proximosDestinos = [];
 
-  Array.from(destinosAnalise).map((posicaoAnalise) => {
+  destinosAnalise.map((posicaoAnalise) => {
     const [ localAtual ] = grafo.filter((grafo) => (grafo.nome === posicaoAnalise));
     const [ localAtualMatriz ] = matrizResultado.filter((local) => (local.chegarEm === posicaoAnalise));
     localAtualMatriz.visitou = true;
@@ -21,8 +21,8 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, destinosAnal
         destinoChegada.vindoDe = [ ...localAtualMatriz.vindoDe, localAtualMatriz.chegarEm ];
         destinoChegada.visitou = false;
         
-        if (!proximosAlvos.find((local) => local === destino.nome)){
-          proximosAlvos.push(destino.nome);
+        if (!proximosDestinos.find((local) => local === destino.nome)){
+          proximosDestinos.push(destino.nome);
         }
       }
       
@@ -37,7 +37,7 @@ const dijkstra = (grafo, matrizResultado, pontoInicial, pontoFinal, destinosAnal
     return;
   }
 
-  dijkstra(grafo, matrizResultado, pontoInicial, pontoFinal, proximosAlvos);
+  dijkstra(grafo, matrizResultado, pontoInicial, pontoFinal, proximosDestinos);
 };
 
 export { dijkstra };
